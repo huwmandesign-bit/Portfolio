@@ -388,9 +388,6 @@ a { color: inherit; text-decoration: none; }
 
 .cs-image {
   position: relative;
-  overflow: hidden;
-  border-radius: var(--radius);
-  background: var(--cod-gray);
   width: 100%;
 }
 
@@ -456,7 +453,7 @@ a { color: inherit; text-decoration: none; }
 
 .cs-phone {
   width: min(318px, 70%);
-  aspect-ratio: 318 / 643;
+  height: auto;
   object-fit: cover;
   border-radius: 32px;
 }

@@ -36,3 +36,13 @@
 
   items.forEach((el) => observer.observe(el));
 })();
+
+// Respect reduced motion for autoplaying videos: show the still frame instead.
+(function () {
+  if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  document.querySelectorAll("video[autoplay]").forEach((v) => {
+    v.removeAttribute("autoplay");
+    v.pause();
+    v.controls = true;
+  });
+})();
