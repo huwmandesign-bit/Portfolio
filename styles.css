@@ -140,16 +140,11 @@ a { color: inherit; text-decoration: none; }
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 51px;
-  height: 51px;
-  border-radius: 50%;
+  width: 44px;          /* comfortable tap target */
+  height: 44px;
 }
 
-.logo img { height: 51px; width: auto; }
-
-/* Smaller mark in the nav; link stays 44px for an easy tap target */
-.nav .logo { width: 44px; height: 44px; }
-.nav .logo img { height: 34px; }
+.logo img { height: 40px; width: auto; }
 
 .nav__links {
   display: flex;
