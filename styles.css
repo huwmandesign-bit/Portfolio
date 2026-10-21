@@ -394,6 +394,9 @@ a { color: inherit; text-decoration: none; }
 .cs-image img,
 .cs-image picture { display: block; width: 100%; height: auto; }
 
+/* The hero export has square corners, so round it to match the other images */
+.cs-image--hero { border-radius: var(--radius); overflow: hidden; }
+
 .cs-image--outcome { background: none; overflow: visible; }
 .cs-image--outcome img { filter: drop-shadow(0 16px 13.5px var(--black)); }
 
