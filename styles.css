@@ -358,6 +358,121 @@ a { color: inherit; text-decoration: none; }
 .footer__links a:hover { color: var(--white); }
 
 /* ==========================================================================
+   Case study pages
+   ========================================================================== */
+.h1--case {
+  font-size: clamp(40px, 5.5vw, 64px);
+  line-height: 1.1;            /* 70.4 / 64 */
+  letter-spacing: -0.03em;     /* -1.92px at 64px */
+}
+
+.cs-hero { padding: 79px 0 40px; }
+
+.cs-hero__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4xl);
+}
+
+.cs-hero__text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xl);
+}
+
+.cs-hero__desc { max-width: var(--narrow-width); }
+
+.cs-label { color: var(--white); }
+
+.cs-image {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: var(--cod-gray);
+  width: 100%;
+}
+
+.cs-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cs-image--hero { aspect-ratio: 1120 / 370; }
+.cs-image--split { aspect-ratio: 544 / 440; }
+.cs-image--wide { aspect-ratio: 640 / 494; }
+.cs-image--research { aspect-ratio: 640 / 385; }
+.cs-image--outcome {
+  aspect-ratio: 544 / 385;
+  background: none;
+  overflow: visible;
+}
+.cs-image--outcome img { filter: drop-shadow(0 16px 13.5px var(--black)); }
+
+/* Two columns: image + text, either way round */
+.cs-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: var(--space-xl);
+}
+
+.cs-text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-l);
+  min-width: 0;
+}
+
+.cs-split .cs-text { gap: var(--space-xl); }
+
+.cs-figure {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  min-width: 0;
+}
+
+/* Single narrow column */
+.cs-narrow {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+  max-width: calc(640px + var(--gutter) * 2);
+}
+
+.cs-strong {
+  color: var(--white);
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.cs-list ul {
+  list-style: disc;
+  padding-left: 20px;
+}
+
+/* Phone on a soft backdrop (micro animation) */
+.cs-phone-stage {
+  display: flex;
+  justify-content: center;
+  padding-block: var(--space-l);
+  border-radius: var(--radius);
+  background: linear-gradient(180deg, #e6eaf6 0%, #f5e3d5 100%);
+}
+
+.cs-phone {
+  width: min(318px, 70%);
+  aspect-ratio: 318 / 643;
+  object-fit: cover;
+  border-radius: 32px;
+}
+
+/* ==========================================================================
    Responsive
    ========================================================================== */
 @media (max-width: 900px) {
@@ -370,6 +485,13 @@ a { color: inherit; text-decoration: none; }
   .about__image { max-width: 544px; }
 
   .job { grid-template-columns: 1fr; gap: var(--space-m); }
+
+  .cs-split { grid-template-columns: 1fr; gap: var(--space-2xl); }
+  /* On one column, text always comes before its image */
+  .cs-split > .cs-text { order: -1; }
+  .cs-hero { padding-top: 48px; }
+  .cs-hero__inner { gap: var(--space-3xl); }
+  .cs-image--hero { aspect-ratio: 16 / 9; }
 
   .career__title { margin-bottom: var(--space-3xl); }
 }
