@@ -208,6 +208,23 @@ a { color: inherit; text-decoration: none; }
 
 .project:hover .project__image img { transform: scale(1.03); }
 
+.project__title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.project__lock { display: inline-flex; color: var(--dusty-gray); }
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
 /* Statement */
 .statement {
   font-size: clamp(22px, 2.6vw, 28px);
@@ -459,6 +476,75 @@ a { color: inherit; text-decoration: none; }
   height: auto;
   object-fit: cover;
   border-radius: 32px;
+}
+
+/* ==========================================================================
+   Lock page (NDA case studies)
+   ========================================================================== */
+.lock { padding-block: 120px 160px; }
+
+.lock__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-l);
+  max-width: calc(544px + var(--gutter) * 2);
+}
+
+.lock__icon { color: var(--dusty-gray); }
+
+.lock__message--error { color: var(--white); }
+
+.lock__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  width: 100%;
+  margin-top: var(--space-m);
+}
+
+.lock__label {
+  color: var(--dusty-gray);
+  font-size: 14px;
+  line-height: 21px;
+}
+
+.lock__row {
+  display: flex;
+  gap: var(--space-s);
+}
+
+.lock__input {
+  flex: 1;
+  min-width: 0;
+  height: 48px;
+  padding: 0 20px;
+  border: 1px solid var(--mine-shaft);
+  border-radius: 100px;
+  background: var(--cod-gray);
+  color: var(--white);
+  font: inherit;
+  font-size: 16px;
+  transition: border-color 0.2s ease;
+}
+
+.lock__input:focus {
+  outline: none;
+  border-color: var(--white-50);
+}
+
+.lock__button {
+  background: none;
+  color: var(--white);
+  font-family: inherit;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+@media (max-width: 480px) {
+  .lock { padding-block: 64px 96px; }
+  .lock__row { flex-direction: column; }
+  .lock__input { flex: none; width: 100%; }
 }
 
 /* ==========================================================================

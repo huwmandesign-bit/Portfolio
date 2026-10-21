@@ -1,0 +1,13 @@
+# No build step: the site is plain HTML/CSS served from the repo root.
+[build]
+  publish = "."
+
+# Password lock for NDA case studies (see netlify/edge-functions/lock.ts).
+# Covers the page and every image inside its folder.
+[[edge_functions]]
+  function = "lock"
+  path = "/apple-pay-deposits"
+
+[[edge_functions]]
+  function = "lock"
+  path = "/apple-pay-deposits/*"
