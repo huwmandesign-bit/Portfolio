@@ -9,6 +9,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <script>document.documentElement.classList.add("js")</script>
+  <script src="script.js" defer></script>
 </head>
 <body>
 
@@ -31,7 +33,7 @@
     <!-- Hero -->
     <section class="hero">
       <div class="container">
-        <h1 class="h1">
+        <h1 class="h1 reveal">
           Hi, I’m Huw - a Product Designer
           <span class="muted">crafting clear experiences</span>
         </h1>
@@ -41,10 +43,10 @@
     <!-- Projects -->
     <section class="section section--projects" id="portfolio">
       <div class="container">
-        <h2 class="h2 h2--center"><span class="muted">My Latest</span> Projects</h2>
+        <h2 class="h2 h2--center reveal"><span class="muted">My Latest</span> Projects</h2>
 
         <ul class="projects">
-          <li>
+          <li class="reveal" style="--delay: 0s">
             <a href="#" class="project">
               <div class="project__image">
                 <img src="assets/project-apple-pay.webp" alt="Apple Pay deposit flow on a phone screen" loading="lazy">
@@ -52,7 +54,7 @@
               <h3 class="h3">Apple Pay Deposits</h3>
             </a>
           </li>
-          <li>
+          <li class="reveal" style="--delay: 0.1s">
             <a href="#" class="project">
               <div class="project__image">
                 <img src="assets/project-banners.webp" alt="Promotional banner designs on a phone screen" loading="lazy">
@@ -60,7 +62,7 @@
               <h3 class="h3">Promotional Banner System</h3>
             </a>
           </li>
-          <li>
+          <li class="reveal" style="--delay: 0s">
             <a href="#" class="project">
               <div class="project__image">
                 <img src="assets/project-arcade.webp" alt="Retro arcade instant win game on a phone screen" loading="lazy">
@@ -68,7 +70,7 @@
               <h3 class="h3">Retro Arcade Instant Win Game</h3>
             </a>
           </li>
-          <li>
+          <li class="reveal" style="--delay: 0.1s">
             <a href="#" class="project">
               <div class="project__image">
                 <img src="assets/project-app-store.webp" alt="App Store screenshot graphics" loading="lazy">
@@ -83,7 +85,7 @@
     <!-- Statement -->
     <section class="section">
       <div class="container container--narrow">
-        <p class="statement">
+        <p class="statement reveal">
           I design for products where trust matters — <span class="muted">payments,
           compliance-shaped flows, systems used at scale.</span> The best work holds up under
           real constraints, not just in a mockup.
@@ -94,10 +96,10 @@
     <!-- About -->
     <section class="section" id="about">
       <div class="container about">
-        <div class="about__image">
+        <div class="about__image reveal">
           <img src="assets/logo-about.png" alt="" width="145" height="271">
         </div>
-        <div class="about__content">
+        <div class="about__content reveal" style="--delay: 0.1s">
           <h2 class="h2">Senior Product Designer, <span class="muted">grounded in graphic design</span></h2>
           <p class="body">
             I moved from print into digital product work, and now design for The National Lottery —
@@ -121,10 +123,10 @@
     <!-- Career -->
     <section class="section">
       <div class="container">
-        <h2 class="h2 career__title"><span class="muted">And This Is</span> My Career</h2>
+        <h2 class="h2 career__title reveal"><span class="muted">And This Is</span> My Career</h2>
 
         <ol class="career">
-          <li class="job">
+          <li class="job reveal">
             <div class="job__info">
               <h3 class="h3">Allwyn (The National Lottery) - Senior Product Designer</h3>
               <p class="job__years">2020 - Now</p>
@@ -137,7 +139,7 @@
               that keeps the wider product consistent at scale.
             </p>
           </li>
-          <li class="job">
+          <li class="job reveal">
             <div class="job__info">
               <h3 class="h3">RCI (Renault Finance) - UI Designer</h3>
               <p class="job__years">2018</p>
@@ -149,7 +151,7 @@
               company-wide, and took projects from early concept through to delivery.
             </p>
           </li>
-          <li class="job">
+          <li class="job reveal">
             <div class="job__info">
               <h3 class="h3">Ardington - Digital Designer</h3>
               <p class="job__years">2017 - 2018</p>
@@ -162,7 +164,7 @@
               the team worked.
             </p>
           </li>
-          <li class="job">
+          <li class="job reveal">
             <div class="job__info">
               <h3 class="h3">Argos - Digital Designer</h3>
               <p class="job__years">2015 - 2017</p>
@@ -181,10 +183,10 @@
     <!-- Contact -->
     <section class="contact" id="contact">
       <div class="container contact__inner">
-        <h2 class="h2 h2--center"><span class="muted">Get in</span> Touch</h2>
-        <p class="body body--center">Reach out by phone or email — I'd love to hear from you.</p>
-        <a href="mailto:huwmandesign@gmail.com" class="button">Say hello</a>
-        <p class="small">Or email <a href="mailto:huwmandesign@gmail.com" class="link">huwmandesign@gmail.com</a></p>
+        <h2 class="h2 h2--center reveal"><span class="muted">Get in</span> Touch</h2>
+        <p class="body body--center reveal" style="--delay: 0.1s">Reach out by phone or email — I'd love to hear from you.</p>
+        <a href="mailto:huwmandesign@gmail.com" class="button reveal" style="--delay: 0.2s">Say hello</a>
+        <p class="small reveal" style="--delay: 0.3s">Or email <a href="mailto:huwmandesign@gmail.com" class="link">huwmandesign@gmail.com</a></p>
       </div>
     </section>
   </main>

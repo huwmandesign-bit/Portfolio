@@ -389,3 +389,36 @@ a { color: inherit; text-decoration: none; }
   html { scroll-behavior: auto; }
   * { transition: none !important; }
 }
+
+/* ==========================================================================
+   Transitions — elements fade up as they scroll into view.
+   Only applied when JavaScript runs, so content is never hidden without it.
+   ========================================================================== */
+.js .reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.8s ease var(--delay, 0s),
+    transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) var(--delay, 0s);
+}
+
+.js .reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* The hero animates on load, slightly larger movement */
+.js .hero .reveal { transform: translateY(32px); transition-duration: 1s; }
+.js .hero .reveal.is-visible { transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .js .reveal { opacity: 1; transform: none; }
+}
+
+/* Keep the button's hover transition alongside its reveal */
+.js .button.reveal {
+  transition:
+    opacity 0.8s ease var(--delay, 0s),
+    transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) var(--delay, 0s),
+    background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
