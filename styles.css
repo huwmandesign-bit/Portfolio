@@ -394,21 +394,10 @@ a { color: inherit; text-decoration: none; }
   width: 100%;
 }
 
-.cs-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+.cs-image img,
+.cs-image picture { display: block; width: 100%; height: auto; }
 
-.cs-image--hero { aspect-ratio: 1120 / 370; }
-.cs-image--split { aspect-ratio: 544 / 440; }
-.cs-image--wide { aspect-ratio: 640 / 494; }
-.cs-image--research { aspect-ratio: 640 / 385; }
-.cs-image--outcome {
-  aspect-ratio: 544 / 385;
-  background: none;
-  overflow: visible;
-}
+.cs-image--outcome { background: none; overflow: visible; }
 .cs-image--outcome img { filter: drop-shadow(0 16px 13.5px var(--black)); }
 
 /* Two columns: image + text, either way round */
@@ -486,12 +475,6 @@ a { color: inherit; text-decoration: none; }
 
   .job { grid-template-columns: 1fr; gap: var(--space-m); }
 
-  .cs-split { grid-template-columns: 1fr; gap: var(--space-2xl); }
-  /* On one column, text always comes before its image */
-  .cs-split > .cs-text { order: -1; }
-  .cs-hero { padding-top: 48px; }
-  .cs-hero__inner { gap: var(--space-3xl); }
-  .cs-image--hero { aspect-ratio: 16 / 9; }
 
   .career__title { margin-bottom: var(--space-3xl); }
 }
@@ -504,6 +487,29 @@ a { color: inherit; text-decoration: none; }
   .projects { grid-template-columns: 1fr; gap: var(--space-xl); }
 
   .contact { padding-block: 96px; }
+}
+
+/* Case study pages: tablet 810–1199px, mobile below 810px (Figma frames) */
+@media (max-width: 1199px) {
+  .cs-page { --gutter: 40px; }
+  .cs-page .section { padding-block: 64px; }
+  .cs-hero { padding: 80px 0 40px; }
+
+  .cs-split,
+  .cs-narrow {
+    grid-template-columns: 1fr;
+    max-width: calc(618px + 96px * 2);
+    padding-inline: 96px;
+  }
+  /* One column: heading and copy always come before the image */
+  .cs-split > .cs-text { order: -1; }
+}
+
+@media (max-width: 809px) {
+  .cs-split,
+  .cs-narrow { padding-inline: var(--gutter); }
+  .cs-hero { padding-top: 64px; }
+  .cs-hero__inner { gap: var(--space-3xl); }
 }
 
 @media (prefers-reduced-motion: reduce) {
