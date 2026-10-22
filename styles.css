@@ -417,6 +417,9 @@ a { color: inherit; text-decoration: none; }
 .cs-image--outcome { background: none; overflow: visible; }
 .cs-image--outcome img { filter: drop-shadow(0 16px 13.5px var(--black)); }
 
+/* Transparent illustrations sit straight on the page */
+.cs-image--illustration { border-radius: 0; overflow: visible; }
+
 /* Two columns: image + text, either way round */
 .cs-split {
   display: grid;
