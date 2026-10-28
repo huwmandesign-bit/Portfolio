@@ -121,17 +121,28 @@
     <section class="section">
       <div class="container cs-split cs-split--text-first">
         <div class="cs-text reveal">
-          <h2 class="h2">Designing within the system</h2>
+          <h2 class="h2">Designing for the system, not just the flow</h2>
           <p class="body">
-            Apple Pay is being designed inside The National Lottery's design system, not alongside it. I worked
-            with the design system designer and followed the agreed process. Apple Pay needed a way to explain a
-            rule at the moment of payment, so I designed and built a new banner component: yellow for the "Cards
-            need to match" AML warning, blue for the note that a saved debit card will be removed, and a loading
-            state for when Apple Pay can't connect.
+            Apple Pay needed a way to explain a rule at the moment of payment, so I designed a new banner
+            component. I worked alongside our design system designer and followed the agreed contribution process.
           </p>
         </div>
         <div class="cs-image cs-image--shadow reveal" style="--delay: 0.1s">
-          <img src="../assets/apple-pay-deposits/system.webp" alt="The new banner component and its yellow, blue and loading variants in the design system" loading="lazy">
+          <img src="../assets/apple-pay-deposits/system.webp" alt="The new banner component and its yellow and blue variants in the design system" loading="lazy">
+        </div>
+      </div>
+      <div class="container cs-wide cs-points">
+        <div class="cs-finding reveal">
+          <h3 class="cs-subhead">Foundations</h3>
+          <p class="body">I built it entirely from existing colour, type and spacing tokens, so it stays on-brand and updates automatically with the system.</p>
+        </div>
+        <div class="cs-finding reveal" style="--delay: 0.1s">
+          <h3 class="cs-subhead">Variants</h3>
+          <p class="body">A yellow warning for the AML message, “Cards need to match”, which players need to act on, and a blue note explaining what happens when a card is removed. Separating “you need to do something” from “here’s useful context” lets players tell at a glance how serious a message is. The illustration, the same on web and app, helps the banner stand out, tackling the banner blindness we saw with the toast, and makes a regulatory message feel friendlier.</p>
+        </div>
+        <div class="cs-finding reveal" style="--delay: 0.2s">
+          <h3 class="cs-subhead">Scalability</h3>
+          <p class="body">Although Apple Pay was the trigger, I designed it so it wasn’t tied to one flow. With small adaptations it’s now used on our draw-based game pages, and once it had proved itself there, we moved it into the design system’s components for global use. Because it was already built from existing tokens, that move was smooth.</p>
         </div>
       </div>
       <div class="container cs-wide">
