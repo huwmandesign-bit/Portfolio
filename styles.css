@@ -526,6 +526,8 @@ a { color: inherit; text-decoration: none; }
 @media (max-width: 809px) {
   .cs-only-wide { display: none; }
   .cs-only-mobile { display: flex; }
+  /* One caption per set: only under the last image in each section */
+  .cs-narrow .cs-figure:not(:last-child) figcaption { display: none; }
 }
 
 /* Two columns: image + text, either way round */
