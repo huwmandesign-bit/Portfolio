@@ -122,6 +122,7 @@ function page(
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/styles.css">
+  <script src="/script.js" defer></script>
 </head>
 <body class="lock-page">
   <header class="nav">
@@ -129,8 +130,12 @@ function page(
       <a href="/" class="logo" aria-label="Huw Maitland-Jones, home">
         <img src="/assets/logo-mark.png" alt="" width="21" height="40">
       </a>
+      <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="site-menu" aria-label="Open menu">
+        <span class="nav__toggle-bar"></span>
+        <span class="nav__toggle-bar"></span>
+      </button>
       <nav aria-label="Main">
-        <ul class="nav__links">
+        <ul class="nav__links" id="site-menu">
           <li><a href="/#portfolio">Portfolio</a></li>
           <li><a href="/#about">About</a></li>
           <li><a href="/#contact">Contact</a></li>

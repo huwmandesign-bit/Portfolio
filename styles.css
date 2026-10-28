@@ -164,6 +164,97 @@ a { color: inherit; text-decoration: none; }
 
 .nav__links a:hover { color: var(--dusty-gray); }
 
+/* Burger toggle: hidden until mobile */
+.nav__toggle { display: none; }
+
+@media (max-width: 809px) {
+  /* Matches the Figma "Nav - Phone / Closed" frame */
+  .nav {
+    position: relative;
+    z-index: 20;
+    padding-block: 20px;
+    background: var(--black);
+    border-bottom: 1px solid var(--mine-shaft);
+  }
+
+  .nav__inner { padding-inline: 20px; justify-content: flex-start; }
+
+  .nav__toggle {
+    position: relative;
+    display: block;
+    width: 44px;            /* 32px icon from Figma, with a comfortable tap area */
+    height: 44px;
+    margin-left: auto;      /* push the burger to the right edge */
+    margin-right: -6px;
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+  }
+
+  .nav__toggle-bar {
+    position: absolute;
+    left: 11px;
+    height: 2px;
+    border-radius: 10px;
+    background: var(--white);
+    transition: transform 0.25s ease, width 0.25s ease, top 0.25s ease;
+  }
+
+  .nav__toggle-bar:first-child { top: 16px; width: 22px; }
+  .nav__toggle-bar:last-child { top: 26px; width: 18px; }
+
+  /* Bars turn into a cross when open */
+  .nav--open .nav__toggle-bar:first-child { top: 21px; width: 22px; transform: rotate(45deg); }
+  .nav--open .nav__toggle-bar:last-child { top: 21px; width: 22px; transform: rotate(-45deg); }
+
+  /* Open state: header and panel turn Cod Gray, matching the Figma open nav */
+  .nav { transition: background-color 0.2s ease, border-color 0.2s ease; }
+  .nav--open { background: var(--cod-gray); border-bottom-color: transparent; }
+
+  /* Dropdown panel */
+  .nav__links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: 0;
+    padding: 66px 20px 28px;
+    background: var(--cod-gray);
+    border-bottom: 1px solid var(--mine-shaft);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s linear 0.2s;
+  }
+
+  /* Inset divider between the logo row and the links */
+  .nav__links::before {
+    content: "";
+    position: absolute;
+    top: 35px;
+    left: 20px;
+    right: 20px;
+    height: 1px;
+    background: var(--mine-shaft);
+  }
+
+  .nav--open .nav__links {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s;
+  }
+
+  .nav__links a {
+    display: block;
+    padding-block: 20px;
+    font-size: 20px;
+    line-height: 28px;
+  }
+}
+
 /* ==========================================================================
    Sections
    ========================================================================== */
@@ -585,7 +676,7 @@ a { color: inherit; text-decoration: none; }
 @media (max-width: 640px) {
   :root { --gutter: 20px; --section-space: 56px; }
 
-  .nav__links { gap: var(--space-l); }
+
 
   .projects { grid-template-columns: 1fr; gap: var(--space-xl); }
 

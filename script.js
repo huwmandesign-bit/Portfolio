@@ -46,3 +46,35 @@
     v.controls = true;
   });
 })();
+
+// Mobile burger menu
+(function () {
+  const header = document.querySelector(".nav");
+  const toggle = header && header.querySelector(".nav__toggle");
+  if (!toggle) return;
+
+  const setOpen = (open) => {
+    header.classList.toggle("nav--open", open);
+    toggle.setAttribute("aria-expanded", String(open));
+    toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+  };
+
+  toggle.addEventListener("click", () => setOpen(!header.classList.contains("nav--open")));
+
+  // Close after choosing a link, on Escape, or when tapping outside the menu
+  header.querySelectorAll(".nav__links a").forEach((a) => a.addEventListener("click", () => setOpen(false)));
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && header.classList.contains("nav--open")) {
+      setOpen(false);
+      toggle.focus();
+    }
+  });
+  document.addEventListener("click", (e) => {
+    if (!header.contains(e.target)) setOpen(false);
+  });
+
+  // Reset when resizing up to tablet/desktop
+  window.matchMedia("(min-width: 810px)").addEventListener("change", (e) => {
+    if (e.matches) setOpen(false);
+  });
+})();
