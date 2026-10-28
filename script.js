@@ -3,7 +3,7 @@
 (function () {
   const items = document.querySelectorAll(".reveal");
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const CASCADE_STEP = 0.2; // seconds between items on load
+  const CASCADE_STEP = 0.25; // seconds between items on load
 
   if (reduceMotion || !("IntersectionObserver" in window)) {
     items.forEach((el) => el.classList.add("is-visible"));
