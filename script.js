@@ -78,3 +78,37 @@
     if (e.matches) setOpen(false);
   });
 })();
+
+// Smart sticky nav: hide on scroll down, show on scroll up
+(function () {
+  const nav = document.querySelector(".nav");
+  if (!nav) return;
+  let lastY = window.scrollY;
+  let ticking = false;
+
+  const update = () => {
+    const y = window.scrollY;
+    const open = nav.classList.contains("nav--open");
+    nav.classList.toggle("nav--scrolled", y > 4);
+
+    if (open || y < nav.offsetHeight) {
+      nav.classList.remove("nav--hidden");
+    } else if (y > lastY + 4) {
+      nav.classList.add("nav--hidden");      // scrolling down
+    } else if (y < lastY - 4) {
+      nav.classList.remove("nav--hidden");   // scrolling up
+    }
+    lastY = y;
+    ticking = false;
+  };
+
+  window.addEventListener("scroll", () => {
+    if (!ticking) {
+      requestAnimationFrame(update);
+      ticking = true;
+    }
+  }, { passive: true });
+
+  // Keyboard users: always show the nav when focus moves into it
+  nav.addEventListener("focusin", () => nav.classList.remove("nav--hidden"));
+})();
