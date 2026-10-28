@@ -532,6 +532,19 @@ a { color: inherit; text-decoration: none; }
   .cs-narrow .cs-figure + .cs-figure { margin-top: 31px; }
 }
 
+/* Full-width figure below a two-column block */
+.cs-wide { margin-top: var(--space-xl); }
+
+/* Image with a drop shadow (Apple Pay design system shot) */
+.cs-image--shadow img { filter: drop-shadow(0 16px 27px var(--black)); }
+
+/* Research findings: stats, sub-headings and lists */
+.cs-findings { display: flex; flex-direction: column; gap: var(--space-xl); padding-block: var(--space-m); }
+.cs-finding { display: flex; flex-direction: column; gap: var(--space-xs); }
+.cs-subhead { color: var(--white); font-size: 20px; font-weight: 700; line-height: 28px; }
+.cs-stats strong { font-weight: 700; }
+.cs-bullets { list-style: disc; padding-left: 20px; }
+
 /* Two columns: image + text, either way round */
 .cs-split {
   display: grid;
@@ -697,6 +710,7 @@ a { color: inherit; text-decoration: none; }
   .cs-hero { padding: 80px 0 40px; }
 
   .cs-split,
+  .cs-wide,
   .cs-narrow {
     grid-template-columns: 1fr;
     max-width: calc(618px + 96px * 2);
@@ -708,6 +722,7 @@ a { color: inherit; text-decoration: none; }
 
 @media (max-width: 809px) {
   .cs-split,
+  .cs-wide,
   .cs-narrow { padding-inline: var(--gutter); }
   .cs-hero { padding-top: 64px; }
   .cs-hero__inner { gap: var(--space-3xl); }

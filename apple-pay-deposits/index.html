@@ -3,19 +3,22 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="robots" content="noindex">
   <title>Apple Pay Deposits — Huw Maitland-Jones</title>
+  <meta name="description" content="Designing Apple Pay deposits for The National Lottery, within one-payment-method and anti-money laundering rules.">
+  <meta name="robots" content="noindex">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css">
-  <script src="/script.js" defer></script>
+  <link rel="stylesheet" href="../styles.css">
+  <script>document.documentElement.classList.add("js")</script>
+  <script src="../script.js" defer></script>
 </head>
 <body class="cs-page">
+
   <header class="nav">
     <div class="container nav__inner">
       <a href="/" class="logo" aria-label="Huw Maitland-Jones, home">
-        <img src="/assets/logo-mark.png" alt="" width="21" height="40">
+        <img src="../assets/logo-mark.png" alt="" width="21" height="40">
       </a>
       <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="site-menu" aria-label="Open menu">
         <span class="nav__toggle-bar"></span>
@@ -25,23 +28,213 @@
         <ul class="nav__links" id="site-menu">
           <li><a href="/#portfolio">Portfolio</a></li>
           <li><a href="/#about">About</a></li>
-          <li><a href="/#contact">Contact</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
   <main>
-    <!-- Placeholder until the Figma case study is built -->
+    <!-- Intro -->
     <section class="cs-hero">
       <div class="container cs-hero__inner">
         <div class="cs-hero__text">
-          <h1 class="h1 h1--case">Apple Pay Deposits</h1>
-          <p class="body body--center cs-hero__desc">You're in. The full case study is on its way.</p>
+          <h1 class="h1 h1--case reveal">Apple Pay Deposits</h1>
+          <p class="body body--center cs-hero__desc reveal">
+            This project is bringing Apple Pay to The National Lottery as a new way to deposit, with Google Pay
+            planned to follow. As sole designer on the Payments team, I've designed and tested the flows in a
+            product where each account can only have one linked payment method and anti-money laundering (AML)
+            rules can decide which card a player may use.
+          </p>
+          <p class="body body--center cs-hero__desc reveal"><span class="cs-label">My role:</span> Research, Information architecture, user flow architecture, UX/UI design, prototyping, user testing</p>
+        </div>
+        <div class="cs-image cs-image--hero reveal">
+          <img src="../assets/apple-pay-deposits/hero.webp" alt="Three deposit screens in The National Lottery app: a warning that cards must match, a note that the saved debit card will be removed, and the default screen with an Apple Pay button">
+        </div>
+      </div>
+    </section>
+
+    <!-- The Problem -->
+    <section class="section">
+      <div class="container cs-split">
+        <div class="cs-image reveal">
+          <img src="../assets/apple-pay-deposits/problem.webp" alt="Deposit screens showing the one-payment-method and card-matching rules" loading="lazy">
+        </div>
+        <div class="cs-text reveal" style="--delay: 0.1s">
+          <h2 class="h2">The Problem</h2>
+          <p class="body">
+            Adding Apple Pay isn't just adding a button. A player can only have one payment method on their
+            account, so paying with Apple Pay could mean replacing their saved debit card. For players with an
+            active AML rule, the Apple Pay card also has to match the debit card already on their account. The
+            design has to make both rules clear at the moment of payment, without turning a quick deposit into a slow one.
+          </p>
+        </div>
+      </div>
+      <div class="container cs-wide">
+        <figure class="cs-figure reveal">
+          <div class="cs-image">
+            <img src="../assets/apple-pay-deposits/problem-rules.webp" alt="Flow diagram of every deposit route and the AML rules each one has to respect" loading="lazy">
+          </div>
+          <figcaption class="small">Every deposit route had to respect AML rules: one debit card per account, matched across Apple Pay and manual card entry.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- The Solution -->
+    <section class="section">
+      <div class="container cs-split cs-split--text-first">
+        <div class="cs-text reveal">
+          <h2 class="h2">The Solution</h2>
+          <p class="body">
+            I designed three journeys: a new player with no card saved, an existing player whose debit card is
+            replaced by Apple Pay, and a player with an active AML rule. Each one explains its rule where it
+            matters, through notes on the deposit screen, a confirmation once the card is removed, and a clear
+            error state when an Apple Pay card doesn't match. I had weekly calls with Apple's team to work through
+            challenges as they came up and get their advice on the designs.
+          </p>
+        </div>
+        <div class="cs-image reveal" style="--delay: 0.1s">
+          <img src="../assets/apple-pay-deposits/solution.webp" alt="Screens from the three Apple Pay deposit journeys" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <!-- Accessibility -->
+    <section class="section">
+      <div class="container cs-split">
+        <div class="cs-image reveal">
+          <img src="../assets/apple-pay-deposits/accessibility.webp" alt="The yellow card-matching warning and blue card-removed notice, with their contrast ratios" loading="lazy">
+        </div>
+        <div class="cs-text reveal" style="--delay: 0.1s">
+          <h2 class="h2">Accessibility</h2>
+          <p class="body">
+            The yellow and blue notices carry critical information, like the card-matching warning and the note
+            that a saved debit card will be removed, so every variation had to meet WCAG AAA contrast. The navy
+            text on the cream warning, for example, has a contrast ratio of 15.08:1. Each notice also uses an icon,
+            so the message doesn't rely on colour alone.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Designing within the system -->
+    <section class="section">
+      <div class="container cs-split cs-split--text-first">
+        <div class="cs-text reveal">
+          <h2 class="h2">Designing within the system</h2>
+          <p class="body">
+            Apple Pay is being designed inside The National Lottery's design system, not alongside it. I worked
+            with the design system designer and followed the agreed process. Apple Pay needed a way to explain a
+            rule at the moment of payment, so I designed and built a new banner component: yellow for the "Cards
+            need to match" AML warning, blue for the note that a saved debit card will be removed, and a loading
+            state for when Apple Pay can't connect.
+          </p>
+        </div>
+        <div class="cs-image cs-image--shadow reveal" style="--delay: 0.1s">
+          <img src="../assets/apple-pay-deposits/system.webp" alt="The new banner component and its yellow, blue and loading variants in the design system" loading="lazy">
+        </div>
+      </div>
+      <div class="container cs-wide">
+        <figure class="cs-figure reveal">
+          <div class="cs-image">
+            <img src="../assets/apple-pay-deposits/system-overview.webp" alt="Overview of every Apple Pay screen across web and app" loading="lazy">
+          </div>
+          <figcaption class="small">An overview of the Apple Pay work across web (blue) and app (purple), all built from The National Lottery design system.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- The Research -->
+    <section class="section">
+      <div class="container cs-narrow">
+        <div class="cs-text reveal">
+          <h2 class="h2">The Research</h2>
+          <p class="body">
+            We tested the prototypes over three rounds of unmoderated usability testing, with around 90
+            participants in total, and changed the design between rounds. The prototypes were built end to end,
+            including card entry and the Apple Pay sheet itself, which is likely why some participants tried to
+            trigger the real Apple Pay using their phone's side button.
+          </p>
+        </div>
+        <div class="cs-image reveal">
+          <img src="../assets/apple-pay-deposits/research-1.webp" alt="Prototype screens used in the usability testing" loading="lazy">
+        </div>
+        <figure class="cs-figure reveal">
+          <div class="cs-image">
+            <img src="../assets/apple-pay-deposits/research-2.webp" alt="The card replaced prototype, depositing with Apple Pay and with the saved debit card" loading="lazy">
+          </div>
+          <figcaption class="small">The card replaced prototype: depositing with Apple Pay (top) or the saved debit card (bottom), both ending in a successful deposit.</figcaption>
+        </figure>
+        <div class="cs-findings reveal">
+          <ul class="body cs-bullets cs-stats">
+            <li><strong>70–77%</strong> preferred paying with Apple Pay, in every round</li>
+            <li><strong>20/20</strong> completed a first Apple Pay deposit (round 3)</li>
+            <li><strong>30% → 63%</strong> noticed the AML warning after we moved and restyled it (3 of 10 → 12 of 19)</li>
+          </ul>
+          <div class="cs-finding">
+            <h3 class="cs-subhead">New player</h3>
+            <p class="body">First deposits felt quick and easy, and the Apple Pay button stood out. No changes were needed.</p>
+          </div>
+          <div class="cs-finding">
+            <h3 class="cs-subhead">Card replaced</h3>
+            <p class="body">Everyone completed the deposit, but most didn't notice their debit card had been removed. It mattered less than expected: 90% said it wouldn't affect them, and most assumed it was for security.</p>
+          </div>
+          <div class="cs-finding">
+            <h3 class="cs-subhead">Active AML</h3>
+            <p class="body">Players understood the failed payment message but missed the warning before it, until we moved and restyled it. When a payment failed, about half fixed it by switching card, and three in four said they'd use their debit card if the matching card wasn't in their wallet.</p>
+          </div>
+          <div class="cs-finding">
+            <h3 class="cs-subhead">What testing shaped</h3>
+            <ul class="body cs-bullets">
+              <li>Moved and restyled the "Cards need to match" warning so more players notice it before they pay</li>
+              <li>Found the "debit card removed" splash screen didn't appear to improve the experience</li>
+              <li>Recommended linking the deposits and payments copy to a fraud and security FAQ</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Where it stands -->
+    <section class="section">
+      <div class="container cs-narrow">
+        <div class="cs-text reveal">
+          <h2 class="h2">Where it stands</h2>
+          <p class="body">Apple Pay is in development, with Google Pay planned to follow.</p>
           <p class="small"><a href="?logout" class="link">Lock this page again</a></p>
         </div>
       </div>
     </section>
+
+    <!-- Contact -->
+    <section class="contact" id="contact">
+      <div class="container contact__inner">
+        <h2 class="h2 h2--center reveal"><span class="muted">Get in</span> Touch</h2>
+        <p class="body body--center reveal" style="--delay: 0.1s">Reach out by phone or email — I'd love to hear from you.</p>
+        <a href="mailto:huwmandesign@gmail.com" class="button reveal" style="--delay: 0.2s">Say hello</a>
+        <p class="small reveal" style="--delay: 0.3s">Or email <a href="mailto:huwmandesign@gmail.com" class="link">huwmandesign@gmail.com</a></p>
+      </div>
+    </section>
   </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <a href="/" class="logo" aria-label="Huw Maitland-Jones, home">
+          <img src="../assets/logo-mark.png" alt="" width="21" height="40">
+        </a>
+        <p class="small">Product designer crafting<br>clear experiences</p>
+        <p class="small"><a href="mailto:huwmandesign@gmail.com" class="footer__email">huwmandesign@gmail.com</a></p>
+      </div>
+      <nav aria-label="Footer">
+        <ul class="footer__links">
+          <li><a href="/#portfolio">Portfolio</a></li>
+          <li><a href="/#about">About</a></li>
+          <li><a href="#contact">Contact me</a></li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
+
 </body>
 </html>
