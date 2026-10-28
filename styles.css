@@ -470,6 +470,9 @@ a { color: inherit; text-decoration: none; }
 
 .footer__links a:hover { color: var(--white); }
 
+.footer__email { transition: color 0.2s ease; }
+.footer__email:hover { color: var(--white); }
+
 /* ==========================================================================
    Case study pages
    ========================================================================== */
