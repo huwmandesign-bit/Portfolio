@@ -146,10 +146,10 @@ a { color: inherit; text-decoration: none; }
 
 .logo img { height: 40px; width: auto; }
 
-/* Nav logo darkens slightly on hover */
-.nav .logo img { transition: filter 0.2s ease; }
-.nav .logo:hover img,
-.nav .logo:focus-visible img { filter: brightness(0.7); }
+/* Logos darken slightly on hover (nav and footer) */
+.logo img { transition: filter 0.2s ease; }
+.logo:hover img,
+.logo:focus-visible img { filter: brightness(0.7); }
 
 .nav__links {
   display: flex;
@@ -519,6 +519,9 @@ a { color: inherit; text-decoration: none; }
 /* Transparent illustrations sit straight on the page */
 .cs-image--illustration { border-radius: 0; overflow: visible; }
 
+/* One caption per image set: only under the last image in each section */
+.cs-narrow .cs-figure:has(+ .cs-figure) figcaption { display: none; }
+
 /* Different image sets per breakpoint (e.g. App Store pairs split on mobile) */
 .cs-stack { display: flex; flex-direction: column; gap: 63px; }   /* 32px gap + 31px padding, from the Figma mobile frame */
 .cs-stack img { width: 100%; height: auto; border-radius: var(--radius); }
@@ -526,8 +529,6 @@ a { color: inherit; text-decoration: none; }
 @media (max-width: 809px) {
   .cs-only-wide { display: none; }
   .cs-only-mobile { display: flex; }
-  /* One caption per set: only under the last image in each section */
-  .cs-narrow .cs-figure:not(:last-child) figcaption { display: none; }
   /* Keep the 63px rhythm across the join between sets (32px gap + 31px) */
   .cs-narrow .cs-figure + .cs-figure { margin-top: 31px; }
 }
