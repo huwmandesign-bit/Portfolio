@@ -766,6 +766,12 @@ a { color: inherit; text-decoration: none; }
   .cs-hero__inner { gap: var(--space-3xl); }
 }
 
+/* Mobile footer: brand block, then links stacked underneath (Figma "Footer - Phone") */
+@media (max-width: 809px) {
+  .footer { padding: 40px 0; }
+  .footer__inner { flex-direction: column; gap: 40px; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .nav { transition: none; }
