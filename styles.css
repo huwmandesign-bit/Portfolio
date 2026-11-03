@@ -37,7 +37,12 @@
    ========================================================================== */
 *, *::before, *::after { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  /* Leave room for the sticky nav when the browser scrolls to a focused
+     element, so keyboard focus is never hidden behind it (WCAG 2.4.11) */
+  scroll-padding-top: 100px;
+}
 
 /* Anchor jumps land below the sticky nav */
 [id] { scroll-margin-top: 100px; }
