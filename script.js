@@ -18,12 +18,20 @@
         .filter((entry) => entry.isIntersecting)
         .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
 
-      visible.forEach((entry, i) => {
+      // Items sharing a row (e.g. a pair of project cards) step in together
+      let row = -1;
+      let rowTop = null;
+      visible.forEach((entry) => {
         const el = entry.target;
+        const top = Math.round(entry.boundingClientRect.top);
+        if (rowTop === null || Math.abs(top - rowTop) > 4) {
+          row += 1;
+          rowTop = top;
+        }
         if (firstBatch) {
-          // Load cascade: order by position, keeping any small side-by-side offset
+          // Load cascade: one step per row, keeping any element's own small offset
           const own = parseFloat(getComputedStyle(el).getPropertyValue("--delay")) || 0;
-          el.style.setProperty("--delay", (0.1 + i * CASCADE_STEP + own) + "s");
+          el.style.setProperty("--delay", (0.1 + row * CASCADE_STEP + own) + "s");
         }
         el.classList.add("is-visible");
         observer.unobserve(el); // animate once only
