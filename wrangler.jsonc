@@ -1,0 +1,12 @@
+// Cloudflare Workers config for huwmandesign.com (plain static site, no build step).
+{
+  "name": "portfolio",
+  "main": "worker/index.ts",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": ".",
+    "binding": "ASSETS",
+    // Only the NDA case study (page + images) runs through the password lock
+    "run_worker_first": ["/apple-pay-deposits", "/apple-pay-deposits/*", "/assets/apple-pay-deposits/*"]
+  }
+}

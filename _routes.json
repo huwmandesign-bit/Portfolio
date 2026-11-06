@@ -1,5 +1,0 @@
-{
-  "version": 1,
-  "include": ["/apple-pay-deposits", "/apple-pay-deposits/*", "/assets/apple-pay-deposits/*"],
-  "exclude": []
-}

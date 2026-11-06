@@ -1,10 +1,11 @@
-// Password lock for NDA case studies (Cloudflare Pages Function).
+// Password lock for NDA case studies.
 //
-// _routes.json sends only the locked paths here (the case study page and its
-// images); everything else is served straight from the static files.
+// wrangler.jsonc (run_worker_first) sends only the locked paths here: the case
+// study page and its images. Everything else is served straight from the
+// static files.
 //
 // The password lives in Cloudflare, never in this code:
-//   Workers & Pages › your project › Settings › Variables and Secrets ›
+//   Workers & Pages › portfolio › Settings › Variables and Secrets ›
 //   CASE_STUDY_PASSWORD (type: Secret)
 //
 // A correct password sets a signed cookie for 7 days, so visitors only
@@ -13,8 +14,11 @@
 const COOKIE = "hmj_case_study";
 const MAX_AGE = 60 * 60 * 24 * 7; // 7 days
 
-export async function onRequest(context: any): Promise<Response> {
-  const { request, env } = context;
+export async function lock(
+  request: Request,
+  env: { CASE_STUDY_PASSWORD?: string },
+  next: () => Promise<Response>,
+): Promise<Response> {
   const password: string | undefined = env.CASE_STUDY_PASSWORD;
 
   // Fail closed: never serve the page if no password has been set up
@@ -66,7 +70,7 @@ export async function onRequest(context: any): Promise<Response> {
   // Already unlocked: serve the real page or image
   const cookie = readCookie(request.headers.get("cookie"), COOKIE);
   if (cookie && (await safeEqual(cookie, token))) {
-    const upstream = await context.next();
+    const upstream = await next();
     const response = new Response(upstream.body, upstream);
     response.headers.set("Cache-Control", "private, no-store");
     return response;
