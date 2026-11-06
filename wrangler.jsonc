@@ -3,6 +3,8 @@
   "name": "portfolio",
   "main": "worker/index.ts",
   "compatibility_date": "2026-10-01",
+  // Lets the preview branch build to its own preview link
+  "previews": {},
   "assets": {
     "directory": ".",
     "binding": "ASSETS",
