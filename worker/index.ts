@@ -9,7 +9,12 @@ interface Env {
   CASE_STUDY_PASSWORD?: string;
 }
 
-const LOCKED = [/^\/apple-pay-deposits(\/|$)/, /^\/assets\/apple-pay-deposits\//];
+const LOCKED = [
+  /^\/apple-pay-deposits(\/|$)/,
+  /^\/assets\/apple-pay-deposits\//,
+  /^\/recurring-play(\/|$)/,
+  /^\/assets\/recurring-play\//,
+];
 
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
