@@ -824,6 +824,30 @@ a { color: inherit; text-decoration: none; }
   transform: none;
 }
 
+/* Headline reveal: words rise into place from behind a mask, line by line */
+.js .split .word {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding-bottom: 0.12em;   /* room for descenders inside the mask */
+  margin-bottom: -0.12em;
+}
+.js .split .word__inner {
+  display: inline-block;
+  transform: translateY(110%) rotate(5deg);
+  transform-origin: 0 100%;
+  transition: transform 1.3s var(--reveal-ease) var(--wdelay, 0s);
+}
+.js .is-visible .split .word__inner,
+.js .split.is-visible .word__inner {
+  transform: none;
+}
+/* A heading that is its own reveal: let the words do the moving */
+.js .reveal.split {
+  opacity: 1;
+  transform: none;
+}
+
 /* Keep the button's hover transition alongside its reveal */
 .js .button.reveal {
   transition:

@@ -10,6 +10,54 @@
     return;
   }
 
+  // Headline reveal: split big headings into words, each sliding up from
+  // behind a mask. Words on the same line move together, line by line.
+  const LINE_STEP = 0.09; // seconds between lines
+  const splitHeading = (h) => {
+    const walker = document.createTreeWalker(h, NodeFilter.SHOW_TEXT);
+    const texts = [];
+    while (walker.nextNode()) texts.push(walker.currentNode);
+    texts.forEach((t) => {
+      const frag = document.createDocumentFragment();
+      t.textContent.split(/(\s+)/).forEach((part) => {
+        if (!part) return;
+        if (/^\s+$/.test(part)) {
+          frag.appendChild(document.createTextNode(" "));
+          return;
+        }
+        const mask = document.createElement("span");
+        mask.className = "word";
+        const inner = document.createElement("span");
+        inner.className = "word__inner";
+        inner.textContent = part;
+        mask.appendChild(inner);
+        frag.appendChild(mask);
+      });
+      t.parentNode.replaceChild(frag, t);
+    });
+    h.classList.add("split");
+  };
+  document.querySelectorAll(".h1, .h2").forEach((h) => {
+    if (h.closest(".reveal")) splitHeading(h);
+  });
+
+  // Just before a block is revealed, stagger its headline words by line
+  const prepareLines = (el, baseDelay) => {
+    const heads = el.classList.contains("split") ? [el] : el.querySelectorAll(".split");
+    heads.forEach((h) => {
+      let line = -1;
+      let lastTop = null;
+      h.querySelectorAll(".word").forEach((w) => {
+        const top = w.offsetTop;
+        if (lastTop === null || Math.abs(top - lastTop) > 4) {
+          line += 1;
+          lastTop = top;
+        }
+        w.firstChild.style.setProperty("--wdelay", (baseDelay + line * LINE_STEP) + "s");
+      });
+    });
+  };
+
   let firstBatch = true;
 
   const observer = new IntersectionObserver(
@@ -33,6 +81,7 @@
           const own = parseFloat(getComputedStyle(el).getPropertyValue("--delay")) || 0;
           el.style.setProperty("--delay", (0.1 + row * CASCADE_STEP + own) + "s");
         }
+        prepareLines(el, parseFloat(getComputedStyle(el).getPropertyValue("--delay")) || 0);
         el.classList.add("is-visible");
         observer.unobserve(el); // animate once only
       });
